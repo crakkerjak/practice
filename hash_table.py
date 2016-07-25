@@ -1,12 +1,21 @@
 #!/usr/bin/python3
+class HashTable:
+    '''A simple list-based implementation of a hash table.
 
-class hash_table:
+    Implements key hashing to place k, v pairs in an 'array' of buckets.
+
+    Attributes:
+        num_buckets: The number of buckets in the underlying data structure.
+        buckets: A list of lists representing an array of buckets.
+    '''
 
     def __init__(self):
+        '''Inits hash_table with num_buckets and an empty bucket array.'''
         self.num_buckets = 128
         self.buckets = [[] for i in range(self.num_buckets)]
 
     def put(self, k, v):
+        '''Places a k, v pair in the HashTable.'''
         bucket = self.buckets[hash(k) % self.num_buckets]
         placed = False
         i = 0
@@ -20,6 +29,7 @@ class hash_table:
             i += 1
 
     def get(self, k):
+        '''Returns a value for a given key, or None if key is not present.'''
         bucket = self.buckets[hash(k) % self.num_buckets]
         v = None
         i = 0
@@ -30,6 +40,7 @@ class hash_table:
         return v
 
     def remove(self, k):
+        '''Removes a k, v from the HashTable and returns v or None.'''
         bucket = self.buckets[hash(k) % self.num_buckets]
         v = None
         i = 0

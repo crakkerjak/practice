@@ -93,8 +93,8 @@ def max_diff_subarrays(A):
     for i, n in enumerate(A[1:]):
         i += 1
         # track max subset sum with indices
-        if (n > max_ending_here +A[i]):
-            max_ending_here =A[i]
+        if (n > max_ending_here + A[i]):
+            max_ending_here = A[i]
             max_ending_here_range = (i, i)
         else:
             max_ending_here +=A[i]
@@ -104,11 +104,11 @@ def max_diff_subarrays(A):
             max_so_far_range = max_ending_here_range
         max_before.append((max_so_far, max_so_far_range))
         # track min subset sum with indices
-        if (n < min_ending_here +A[i]):
-            min_ending_here =A[i]
+        if (n < min_ending_here + A[i]):
+            min_ending_here = A[i]
             min_ending_here_range = (i, i)
         else:
-            min_ending_here +=A[i]
+            min_ending_here += A[i]
             min_ending_here_range = (min_ending_here_range[0], i)
         if min_ending_here < min_so_far:
             min_so_far = min_ending_here
